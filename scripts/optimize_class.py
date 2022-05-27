@@ -13,11 +13,11 @@ from mpl_toolkits.mplot3d import Axes3D
 
 class Fminsearch:
     def load_set(self, points, tfs):
-        '''Loads detected blob positions and corresponding transformations T_0^eef from .txt files.
+        '''Loads detected blob positions and corresponding transformations T_0^f from .txt files.
 
         Arguments:
         points - path to .txt file containing blob positions in the camera frame
-        tfs - path to .txt file containing transformations from the robot base frame to the end effector frame'''
+        tfs - path to .txt file containing transformations from the robot base frame to the robot flange frame'''
 
         self.data = np.loadtxt(points, delimiter=",")
 
@@ -76,7 +76,7 @@ class Fminsearch:
         Arguments:
         posquat - transformation from the flange frame to the camera frame
         data_pos - blob positions in the camera frame
-        data_tf - transformations from the robot base frame to the end effector frame
+        data_tf - transformations from the robot base frame to the flange frame
         
         Returns:
         f - function value which is being minimized'''
@@ -104,7 +104,7 @@ class Fminsearch:
         '''Transforms input data using provided transformation.
         
         Arguments:
-        posquat - transformation from the eef frame to the camera frame'''
+        posquat - transformation from the flange frame to the camera frame'''
 
         self.txs_optimized = np.zeros_like(self.data)
 

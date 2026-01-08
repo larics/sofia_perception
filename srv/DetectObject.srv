@@ -1,3 +1,5 @@
 sensor_msgs/PointCloud2 input_pc
 ---
-geometry_msgs/Point object_centroid
+geometry_msgs/Point object_centroid_yellow
+geometry_msgs/Point object_centroid_green
+geometry_msgs/Point object_centroid_blue

@@ -150,7 +150,7 @@ if __name__ == "__main__":
     optim = Fminsearch()
     optim.load_set(poses_path, tfs_path)
 
-    # initial guess for the optimization algorithm written as position + quaternion (x, y, z, qx, qy, qz, qw)
+    # REPLACE initial guess (t1) for the optimization algorithm written as position + quaternion (x, y, z, qx, qy, qz, qw) with your calculated guess
     t1 = np.asarray([0, 0, 0, 0, 0, 0, 0])
     topt, f = optim.do_optimise_T(t1)
 

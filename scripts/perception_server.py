@@ -10,7 +10,8 @@ class SofiaPerception(object):
     def __init__(self):
         self.detect_object_srv = rospy.Service('detect_object', DetectObject, self.detect_object)
         print("DetectObject srv is now available")
-        self.z = 0.05
+        self.z_min = 0.01
+        self.z_max = 0.2
         rospy.spin()
 
     def detect_object(self, req):
@@ -21,7 +22,7 @@ class SofiaPerception(object):
         #########################
 
         z_values = self.points['z']
-        mask = ~np.isnan(z_values) * (z_values > self.z) * (z_values < self.z + 0.15)    # removing spurious points 
+        mask = ~np.isnan(z_values) * (z_values > self.z_min) * (z_values < self.z_max)    # removing spurious points 
         self.points = self.points[mask]
 
         object_centroid = Point()
